@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<h2> {{employee.sur_name}} -  {{employee.job_title}} </h2>
+
+<p>First Name: {{employee.first_name}}</p>
+<p>Gross Salary: {{employee.monthly_gross}}</p>
+<p>Net Pay: {{net_pay}}</p>
+<p>Weekly Income: {{weekly_pay}}</p>
+
+
+<h3>Deductions</h3>
+
+<ul>
+    {% for deduction in deductions %}
+    <li>{{deduction.name}}: {{deduction.amount}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
