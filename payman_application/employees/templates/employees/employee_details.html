@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'employees/base.html' %}
 {% block content%}
 
 <h2> {{employee.sur_name}} -  {{employee.job_title}} </h2>
 
 <p>First Name: {{employee.first_name}}</p>
+<p>Type : {{employee.emp_type}}</p>
 <p>Gross Salary: {{employee.monthly_gross}}</p>
 <p>Net Pay: {{net_pay}}</p>
 <p>Weekly Income: {{weekly_pay}}</p>
