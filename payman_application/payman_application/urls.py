@@ -28,7 +28,8 @@ urlpatterns = [
     path('',views.homepage),
     path('employees/', include('employees.urls')),
     path('accounts/login/', auth_views.LoginView.as_view(), name = 'login'),
-    path(f"{base_url}/users/", include("accounts.urls"))
+    path(f"{base_url}/users/", include("accounts.urls")),
+    path(f"{base_url}/list/", include("employees.urls")),
 
     #path('accounts/logout/', auth_views.LogoutView.as_view(), name = 'logout'),
     #path('accounts/register/', auth_views.LogoutView.as_view(), name = 'logout'),

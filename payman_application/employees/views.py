@@ -4,6 +4,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Employee, Deduction, SalaryDetails
 from .forms import EmployeeForms, SalaryForms, DeductionForms
+from .serializers import EmployeesViewSerializer
+from rest_framework import generics
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -60,3 +63,16 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, "registration/register.html",{'form':form})
+
+class MyModelListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeesViewSerializer
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'status': True,
+            'message': 'Employee list retrieved successfully.',
+            'data': serializer.data
+        })
